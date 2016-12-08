@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eb888ea84a45675db2bc1f4dd4da889d",
-    "content-hash": "be56596918ef42a15b75d881aaedbd55",
+    "hash": "8409916c201f7ad91e6743106460b51f",
+    "content-hash": "409da82afc44a9ad925837f78f35d727",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2218,6 +2218,54 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
+        },
+        {
+            "name": "yuzuru-s/markovchain",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/YuzuruS/Markovchain.git",
+                "reference": "40d122490f43fd95a641fa2732cee974e6d4e0e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/YuzuruS/Markovchain/zipball/40d122490f43fd95a641fa2732cee974e6d4e0e5",
+                "reference": "40d122490f43fd95a641fa2732cee974e6d4e0e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "0.3.*@dev",
+                "phpunit/phpunit": "3.7.*@stable",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "YuzuruS": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "YuzuruS",
+                    "email": "navitima@gmail.com",
+                    "homepage": "http://yuzurus.hatenablog.jp/"
+                }
+            ],
+            "description": "mackovchain text builder for Japanese to use MeCab",
+            "homepage": "https://github.com/YuzuruS/Markovchain",
+            "keywords": [
+                "japanese",
+                "markovchain",
+                "mecab"
+            ],
+            "time": "2016-11-24 06:17:55"
         }
     ],
     "packages-dev": [
@@ -3383,7 +3431,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "yuzuru-s/markovchain": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
