@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - .:/var/www/html
+      - ../service:/var/www/html
       - ./apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf
       - ./apache2/sites-available/001-default.conf:/etc/apache2/sites-available/001-default.conf
     depends_on:
