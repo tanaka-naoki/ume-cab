@@ -15,7 +15,7 @@ RUN apt-get update \
 RUN cd /usr/local/src
 RUN wget https://github.com/rsky/php-mecab/archive/v0.6.0.tar.gz && tar xzvf v0.6.0.tar.gz
 RUN cd php-mecab-0.6.0/mecab && phpize && ./configure --with-mecab=/usr/bin/mecab-config && make && make install
-#RUN echo "extension=mecab.so" >> /etc/php5/fpm/conf.d/30-mecab.ini
+RUN echo "extension=mecab.so" >> /usr/local/etc/php/conf.d/30-mecab.ini
 
 COPY apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY apache2/sites-available/001-default.conf /etc/apache2/sites-available/
