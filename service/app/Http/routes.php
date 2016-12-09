@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'MarkovController@index');
+Route::post('/', 'MarkovController@result');
