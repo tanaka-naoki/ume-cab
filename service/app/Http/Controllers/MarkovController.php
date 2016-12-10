@@ -19,7 +19,7 @@ class MarkovController extends Controller
         $text = Input::get('input_text');
         $mc = new Markovchain();
         $markovText = $mc->makeMarkovText($text);
-        return view('markov.index',['result' => $markovText]);
+        return view('markov.index',['result' => $markovText, 'text' => $text]);
     }
 
 

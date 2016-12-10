@@ -39,10 +39,10 @@
     <div class="content">
         <form method="post" action="/">
             <div>
-                <textarea name="input_text"></textarea>
+                <textarea name="input_text">{{ $text }}</textarea>
             </div>
-            <div>
-                <textarea>{{ $result }}</textarea>
+            <div style="width: 800px">
+                {{ $result }}
             </div>
             <button type="submit" value="markov">送信</button>
         </form>
