@@ -11,13 +11,13 @@ class MarkovController extends Controller
 
 	public function index()
 	{
-        return view('markov.index',['result' => '']);
+        return view('markov.index',['result' => '', 'text' => '']);
 	}
 
 	public function result()
     {
-        $text = Input::get('input_text');
-        $mc = new Markovchain();
+        $text = str_replace(array("\r\n", "\r", "\n"), '', Input::get('input_text'));
+        $mc = new Markovchain(5000);
         $markovText = $mc->makeMarkovText($text);
         return view('markov.index',['result' => $markovText, 'text' => $text]);
     }
