@@ -11,6 +11,7 @@ class Markov
     protected $node_text = null;   // 形態素解析後の文章ノード
     protected $word_table = []; // マルコフ連鎖用テーブル
     protected $noun = [];   // 名詞配列
+    protected $text_num = 1;
     protected $result = ''; // マルコフ連鎖結果
 
     /**
@@ -143,12 +144,17 @@ class Markov
      */
     protected function create_word_table()
     {
+        $tex_num = 0;
         $words = $this->ary_text;
         foreach($words as $key => $word)
         {
             if($word == '')
             {
                 continue;
+            }
+            if($word == '。')
+            {
+                $tex_num++;
             }
             $t = [];
             for($i=1; $i<=$this->hierarchy; $i++)
@@ -161,6 +167,7 @@ class Markov
             }
 
             $this->word_table[$word][] = $t;
+            $this->text_num = $tex_num;
         }
     }
 
@@ -173,36 +180,49 @@ class Markov
         {
             return;
         }
-
+        $text_num = 0;
         $head_index = array_rand($this->noun);
 
         $head_word = $this->noun[$head_index];
         $this->result = $head_word;
 
         $count = 0;
-        $loop = count($this->word_table) / $this->hierarchy;
+
+        $loop = intval(count($this->word_table) / $this->hierarchy);
 
         do{
             $index = 0;
             if(count($this->word_table[$head_word]) > 1)
             {
-                $index = array_rand($this->word_table[$this->noun[$head_index]]);
+                $index = array_rand($this->word_table[$head_word]);
             }
 
             $words = $this->word_table[$head_word][$index];
 
             foreach($words as $word)
             {
+
                 if($word == '')
                 {
-                    break;
+                    continue;
                 }
+
+                if ($word == '。')
+                {
+                    $text_num++;
+                }
+
                 $head_word = $word;
                 $this->result .= $word;
             }
 
+            if($this->text_num <= $text_num)
+            {
+                break;
+            }
+
             $count++;
-        }while($count <= $loop);
+        }while(count($this->word_table) >= $count);
     }
 
 }
