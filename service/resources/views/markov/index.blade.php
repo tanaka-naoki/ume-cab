@@ -41,8 +41,15 @@
             <div>
                 <textarea name="input_text">{{ $text }}</textarea>
             </div>
-            <div style="width: 800px">
-                {{ $result }}
+
+            <div>通常</div>
+            <div style="width: 800px; border: 1px solid #000000; margin-top: 20px; ">
+                {{ $result[0] }}
+            </div>
+
+            <div>自作</div>
+            <div style="width: 800px; border: 1px solid #000000; margin-top: 20px; ">
+                {{ $result[1] }}
             </div>
             <button type="submit" value="markov">送信</button>
         </form>
