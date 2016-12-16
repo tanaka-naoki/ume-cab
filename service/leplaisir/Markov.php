@@ -1,6 +1,11 @@
 <?php
 namespace Leplaisir;
-
+/*
+$m = new Markov(5);
+$m->set_text('今の段階で仕事上で分からないことがあり、足りないことがあり、日本語の使い方が正しくかもしれないことがありますので、もし仕事で何にが間違ったところがありましたら、お先輩たぜひぜひ教えてくだい。');
+$r = $m->execute();
+var_dump($r);
+*/
 class Markov
 {
     protected $text;
@@ -181,9 +186,18 @@ class Markov
             return;
         }
         $text_num = 0;
-        $head_index = array_rand($this->noun);
 
-        $head_word = $this->noun[$head_index];
+        while(true)
+        {
+            $head_word = $this->noun[array_rand($this->noun)];
+            if(isset($this->word_table[$head_word]))
+            {
+                $this->result = $head_word;
+                break;
+            }
+        }
+
+        $head_word = $this->noun[array_rand($this->noun)];
         $this->result = $head_word;
 
         $count = 0;

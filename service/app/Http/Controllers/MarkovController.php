@@ -22,7 +22,7 @@ class MarkovController extends Controller
 
         try
         {
-            $leplaisir = new Markov();
+            $leplaisir = new Markov(5);
             $leplaisir->set_text($text);
             $le_result = $leplaisir->execute(['-d', '/usr/lib/mecab/dic/mecab-ipadic-neologd']);
 
