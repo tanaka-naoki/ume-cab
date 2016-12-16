@@ -197,9 +197,6 @@ class Markov
             }
         }
 
-        $head_word = $this->noun[array_rand($this->noun)];
-        $this->result = $head_word;
-
         $count = 0;
 
         $loop = intval(count($this->word_table) / $this->hierarchy);
