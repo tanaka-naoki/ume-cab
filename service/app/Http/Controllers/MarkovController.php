@@ -26,8 +26,6 @@ class MarkovController extends Controller
             $leplaisir->set_text($text);
             $le_result = $leplaisir->execute(['-d', '/usr/lib/mecab/dic/mecab-ipadic-neologd']);
 
-            $mc = new Markovchain(5000);
-            $markovText = $mc->makeMarkovText($text);
         }
         catch (Exception $e)
         {
@@ -35,7 +33,7 @@ class MarkovController extends Controller
             $markovText = 'error';
         }
 
-        return view('markov.index',['result' => [$markovText, $le_result], 'text' => $text]);
+        return view('markov.index',['result' => ['', $le_result], 'text' => $text]);
     }
 
 
