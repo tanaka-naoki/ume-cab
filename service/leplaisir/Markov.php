@@ -18,6 +18,7 @@ class Markov
     protected $noun = [];   // 名詞配列
     protected $text_num = 1;
     protected $result = ''; // マルコフ連鎖結果
+    protected $feature = [];
 
     /**
      * Markov constructor.
@@ -74,6 +75,11 @@ class Markov
     public function get_result()
     {
         return $this->result;
+    }
+
+    public function get_feature()
+    {
+        return $this->feature;
     }
 
     public function clear()
@@ -137,7 +143,8 @@ class Markov
         $this->node_text = $mecab->parseToNode($this->text);
         foreach ($this->node_text as $n) {
             $feature = explode(',', $n->getFeature());
-            if(isset($feature[0]) && $feature[0] == '名詞')
+            $this->feature[] = $feature;
+            if(isset($feature[0]) && $feature[0] == '名詞' && $feature[6] != '*')
             {
                 $this->noun[] = $feature[6];
             }
